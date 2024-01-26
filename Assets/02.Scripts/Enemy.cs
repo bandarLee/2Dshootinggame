@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public float Movespeed = 3f; // 이동 속도 : 초당 3만큼 이동하겠다.
+    private float Movespeed = 3f; // 이동 속도 : 초당 3만큼 이동하겠다.
     public int enemyhealth;
     public EnemyType enemytype;
     private GameObject _target;

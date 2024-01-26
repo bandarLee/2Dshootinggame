@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float Movespeed = 3f; // 이동 속도 : 초당 3만큼 이동하겠다.
+    private float Movespeed = 3f; // 이동 속도 : 초당 3만큼 이동하겠다.
     public Animator MyAnimatior;
     void Update()
     {
@@ -56,13 +56,23 @@ public class PlayerMove : MonoBehaviour
     }
     public void SpeedUp()
     {
-            Movespeed += 1.0f;
+        SetSpeed(Movespeed += 1.0f);
+
     }
     public void SpeedDown()
 
     {
-        Movespeed -= 1.0f;
+        SetSpeed(Movespeed -= 1.0f);
         
+        
+    }
+    public void GetSpeed(float speed)
+    {
+        speed = Movespeed;
+    }
+    public void SetSpeed(float speed)
+    {
+        Movespeed = speed;
     }
 
 }
