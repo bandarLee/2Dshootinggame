@@ -66,13 +66,13 @@ public class PlayerMove : MonoBehaviour
         
         
     }
-    public void GetSpeed(float speed)
+    public float GetSpeed()
     {
-        speed = Movespeed;
+        return Movespeed;
     }
-    public void SetSpeed(float speed)
+    public float SetSpeed(float speed)
     {
-        Movespeed = speed;
+        return speed;
     }
 
 }
