@@ -97,6 +97,8 @@ void Update()
     {
         GameObject playerGameObject = GameObject.Find("ScoreManager");
         ScoreManager scoreManager = playerGameObject.GetComponent<ScoreManager>();
+        GameObject Player = GameObject.Find("Player");
+        Player player = Player.GetComponent<Player>();
         MyAnimator.Play("Hit");
 
             enemydamage.Play();
@@ -106,13 +108,21 @@ void Update()
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            int lifecount = player.Getlifecount();
+
             //충돌을 시작했을때 한번
             Instantiate(explosion, transform.position, Quaternion.identity);
 
             Destroy(this.gameObject);
-
-
+            player.Minuslifecount();
+            Instantiate(explosion, collision.transform.position, Quaternion.identity);
+            if (lifecount == 0)
+            {
+                Destroy(collision.gameObject);
+            }
         }
+
+
 
         if (bullet != null)
         {
@@ -175,6 +185,7 @@ void Update()
         }
 
     }
+
     IEnumerator MsecondCoroution()
     {
         var wait = new WaitForSeconds(2f);

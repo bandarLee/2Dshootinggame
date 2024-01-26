@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int lifecount = 3;
+    private int _lifecount = 3;
 
     public TMP_Text Life;
     public GameObject explosion;
@@ -17,24 +17,22 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Life.text = $"Life count {lifecount}";
+        Life.text = $"Life count {_lifecount}";
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public void Addlifecount()
     {
+        _lifecount++;
+    }
+    public void Minuslifecount()
+    {
+        _lifecount--;
 
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Instantiate(explosion, transform.position, Quaternion.identity) ;
-            //충돌을 시작했을때 한번s
-            Debug.Log("Enter");
-            lifecount--;
-        }
-
-        if (lifecount == 0)
-        {
-            Destroy(this.gameObject);
-        }
+    }
+    public int Getlifecount()
+    {
+        return _lifecount; 
     }
 }

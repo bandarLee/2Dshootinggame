@@ -67,7 +67,7 @@ public class Item : MonoBehaviour
                 {
                     GameObject playerGameObject = GameObject.Find("Player"); 
                     Player player = playerGameObject.GetComponent<Player>();
-                    player.lifecount++;
+                    player.Addlifecount();
 
 
                     ItemEatSource.Play();
@@ -87,7 +87,7 @@ public class Item : MonoBehaviour
                     {
                         GameObject playerGameObject = GameObject.Find("Player");
                         PlayerMove playermove = playerGameObject.GetComponent<PlayerMove>();
-                        playermove.Movespeed++;
+                        playermove.SpeedUp();
                         ItemEatSource.Play();
                         Instantiate(itemparticle, _target.transform.position, Quaternion.identity);
                         Destroy(this.gameObject);

@@ -10,7 +10,6 @@ public class PlayerMove : MonoBehaviour
     {
 
         Move();
-        SpeedUpDown();
 
     }
     private void Awake()
@@ -55,16 +54,15 @@ public class PlayerMove : MonoBehaviour
             transform.position = (MinXUpdatePosition);
         }    
     }
-    private void SpeedUpDown()
+    public void SpeedUp()
     {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
             Movespeed += 1.0f;
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Movespeed -= 1.0f;
-        }
+    }
+    public void SpeedDown()
+
+    {
+        Movespeed -= 1.0f;
+        
     }
 
 }
