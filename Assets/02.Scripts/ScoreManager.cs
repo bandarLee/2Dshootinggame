@@ -7,7 +7,7 @@ using System.Drawing;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int point = 0;
+    private int _score = 0;
 
     public TMP_Text Point;
     public TMP_Text BestScoreTextUI;
@@ -22,12 +22,25 @@ public class ScoreManager : MonoBehaviour
         //playerprefab을 사용할것임.
         PlayerPrefs.SetInt("BestScore", BestScore);
 
-        Point.text = $"{point:D6}";
-        if (BestScore < point)
+        Point.text = $"{_score:D6}";
+        if (BestScore < _score)
         {
-            BestScore = point;
+            BestScore = _score;
         }
         BestScoreTextUI.text = $"{BestScore:D6}";
+    }
+    //목표 : score 속성에 대한 캡슐화(get/set)
+    public int GetScore()
+    {
+        return _score;
+    }
+    public void SetScore(int score)
+    {
+        if (score < 0)
+        {
+            return;
+        }
+        _score = score;
     }
 
 }
