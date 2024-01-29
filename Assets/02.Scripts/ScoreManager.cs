@@ -12,6 +12,22 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text Point;
     public TMP_Text BestScoreTextUI;
     public int BestScore = 0;
+    public static ScoreManager Instance;
+
+
+    private void Awake()
+    {
+        // 싱글톤 패턴 : 오직 한개의 클래스 인스턴스를 갖도록 보장
+        if( Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
     void Start()
     {
         BestScore = PlayerPrefs.GetInt("BestScore", 0);

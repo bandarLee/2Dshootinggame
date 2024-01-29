@@ -95,8 +95,8 @@ void Update()
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject playerGameObject = GameObject.Find("ScoreManager");
-        ScoreManager scoreManager = playerGameObject.GetComponent<ScoreManager>();
+        //GameObject playerGameObject = GameObject.Find("ScoreManager");
+        //ScoreManager scoreManager = playerGameObject.GetComponent<ScoreManager>();
         GameObject Player = GameObject.Find("Player");
         Player player = Player.GetComponent<Player>();
         MyAnimator.Play("Hit");
@@ -116,7 +116,7 @@ void Update()
             Destroy(this.gameObject);
             player.Minuslifecount();
             Instantiate(explosion, collision.transform.position, Quaternion.identity);
-            if (lifecount == 0)
+            if (lifecount <= 0)
             {
                 Destroy(collision.gameObject);
             }
@@ -146,9 +146,9 @@ void Update()
                 SetItemRate();
 
                 Destroy(this.gameObject);
-                int score = scoreManager.GetScore();
+                int score = ScoreManager.Instance.GetScore();
 
-                scoreManager.SetScore(score + 1);
+                ScoreManager.Instance.SetScore(score + 1);
 
             }
         }
@@ -164,8 +164,8 @@ void Update()
 
             SetItemRate();
             Destroy(this.gameObject);
-            int score = scoreManager.GetScore();
-            scoreManager.SetScore(score + 1);
+            int score = ScoreManager.Instance.GetScore();
+            ScoreManager.Instance.SetScore(score + 1);
 
 
         }
