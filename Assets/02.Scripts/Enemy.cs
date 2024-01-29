@@ -146,9 +146,8 @@ void Update()
                 SetItemRate();
 
                 Destroy(this.gameObject);
-                int score = ScoreManager.Instance.GetScore();
 
-                ScoreManager.Instance.SetScore(score + 1);
+                ScoreManager.Instance.Score += 1;
 
             }
         }
@@ -164,8 +163,7 @@ void Update()
 
             SetItemRate();
             Destroy(this.gameObject);
-            int score = ScoreManager.Instance.GetScore();
-            ScoreManager.Instance.SetScore(score + 1);
+            ScoreManager.Instance.Score += 1;
 
 
         }

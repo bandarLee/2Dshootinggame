@@ -8,7 +8,11 @@ using System.Drawing;
 public class ScoreManager : MonoBehaviour
 {
     private int _score = 0;
-
+    public int Score
+    {
+        get { return _score; }
+        set { _score = value; }
+    }
     public TMP_Text Point;
     public TMP_Text BestScoreTextUI;
     public int BestScore = 0;
@@ -46,17 +50,6 @@ public class ScoreManager : MonoBehaviour
         BestScoreTextUI.text = $"{BestScore:D6}";
     }
     //¸ñÇ¥ : score ¼Ó¼º¿¡ ´ëÇÑ Ä¸½¶È­(get/set)
-    public int GetScore()
-    {
-        return _score;
-    }
-    public void SetScore(int score)
-    {
-        if (score < 0)
-        {
-            return;
-        }
-        _score = score;
-    }
+    
 
 }
