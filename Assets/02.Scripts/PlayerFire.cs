@@ -9,14 +9,46 @@ public class PlayerFire : MonoBehaviour
     [Header("ÃÑ¾Ë ÇÁ¸®Æé")]
     public GameObject BulletPrefab; //ÃÑ¾Ë ÇÁ¸®Æé
 
-
-
-
-
-
-
     [Header("º¸Á¶¹«±â ÇÁ¸®Æé")]
     public GameObject SubBulletPrefab; //ÃÑ¾Ë ÇÁ¸®Æé
+
+    public int PoolSize = 20;
+    private List<GameObject> _bulletPool;
+    private List<GameObject> _subBulletPool;
+    void Awake()
+    {
+        _bulletPool = new List<GameObject>();
+        _subBulletPool = new List<GameObject>();
+
+        for (int i = 0; i < PoolSize; i++)
+        {
+            GameObject bullet = Instantiate(BulletPrefab);
+            bullet.SetActive(false);
+            _bulletPool.Add(bullet);
+
+            GameObject subBullet = Instantiate(SubBulletPrefab);
+            subBullet.SetActive(false);
+            _subBulletPool.Add(subBullet);
+        }
+    }
+
+    GameObject GetPooledObject(List<GameObject> pool, GameObject prefab)
+    {
+        foreach (var obj in pool)
+        {
+            if (!obj.activeInHierarchy)
+            {
+                return obj;
+            }
+        }
+
+        GameObject newObject = Instantiate(prefab);
+        newObject.SetActive(false);
+        pool.Add(newObject);
+
+        return newObject;
+    }
+
     [Header("ÇÊ»ì±â")]
     public GameObject UltimatePrefab; //ÃÑ¾Ë ÇÁ¸®Æé
     [Header("ÃÑ±¸")]
@@ -77,16 +109,17 @@ public class PlayerFire : MonoBehaviour
 
                 for (int i = 0; i < Muzzles.Count; i++)
                 {
-                    GameObject bullet = Instantiate(BulletPrefab);
-
+                    GameObject bullet = GetPooledObject(_bulletPool, BulletPrefab);
                     bullet.transform.position = Muzzles[i].transform.position;
+                    bullet.SetActive(true);
                     FireSource.Play();
                 }
                 for (int i = 0; i < SubMuzzles.Count; i++)
                 {
-                    GameObject subbullet = Instantiate(SubBulletPrefab);
+                    GameObject subBullet = GetPooledObject(_subBulletPool, SubBulletPrefab);
+                    subBullet.transform.position = SubMuzzles[i].transform.position;
+                    subBullet.SetActive(true);
 
-                    subbullet.transform.position = SubMuzzles[i].transform.position;
 
                 }
             }

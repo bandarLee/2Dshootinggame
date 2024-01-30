@@ -129,13 +129,13 @@ void Update()
             if (bullet.Btype == BulletType.Main)
             {
                 enemyhealth -= 2;
-                Destroy(bullet.gameObject);
+                bullet.gameObject.SetActive(false);
 
             }
-            if (bullet.Btype == BulletType.Main)
+            if (bullet.Btype == BulletType.Sub)
             {
                 enemyhealth -= 2;
-                Destroy(bullet.gameObject);
+                bullet.gameObject.SetActive(false);
 
             }
             else if (bullet.Btype == BulletType.Ult)

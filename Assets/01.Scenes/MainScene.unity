@@ -1447,6 +1447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 708188831525626999, guid: 3a56544e3e367584fabb71c9740bd818, type: 3}
   SubBulletPrefab: {fileID: 4132583919954724431, guid: 7daefc27be78c784281c086242557639, type: 3}
+  PoolSize: 20
   UltimatePrefab: {fileID: 6484099443834134519, guid: 7122ebb7d104cb049adda738b81321c3, type: 3}
   Muzzles:
   - {fileID: 1248176219}
