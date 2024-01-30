@@ -8,14 +8,23 @@ public class PlayerFire : MonoBehaviour
 {
     [Header("ÃÑ¾Ë ÇÁ¸®Æé")]
     public GameObject BulletPrefab; //ÃÑ¾Ë ÇÁ¸®Æé
+
+
+
+
+
+
+
     [Header("º¸Á¶¹«±â ÇÁ¸®Æé")]
     public GameObject SubBulletPrefab; //ÃÑ¾Ë ÇÁ¸®Æé
     [Header("ÇÊ»ì±â")]
     public GameObject UltimatePrefab; //ÃÑ¾Ë ÇÁ¸®Æé
     [Header("ÃÑ±¸")]
-    public GameObject[] Muzzles;       //ÃÑ±¸ µé
+    public List<GameObject> Muzzles = new List<GameObject>();
+
+
     [Header("º¸Á¶ÃÑ±¸")]
-    public GameObject[] SubMuzzles;       //ÃÑ±¸ µé
+    public List<GameObject> SubMuzzles = new List<GameObject>();
     public AudioSource FireSource;
     public float Movespeed = 30f;
     public bool isDelay;
@@ -32,6 +41,7 @@ public class PlayerFire : MonoBehaviour
 
     void Start()
     {
+
 
     }
 
@@ -65,14 +75,14 @@ public class PlayerFire : MonoBehaviour
                 isDelay = true;
 
 
-                for (int i = 0; i < Muzzles.Length; i++)
+                for (int i = 0; i < Muzzles.Count; i++)
                 {
                     GameObject bullet = Instantiate(BulletPrefab);
 
                     bullet.transform.position = Muzzles[i].transform.position;
                     FireSource.Play();
                 }
-                for (int i = 0; i < SubMuzzles.Length; i++)
+                for (int i = 0; i < SubMuzzles.Count; i++)
                 {
                     GameObject subbullet = Instantiate(SubBulletPrefab);
 
@@ -91,7 +101,7 @@ public class PlayerFire : MonoBehaviour
                 isDelay = true;
 
 
-                for (int i = 0; i < Muzzles.Length; i++)
+                for (int i = 0; i < Muzzles.Count; i++)
                 {
                     FireSource.Play();
 
@@ -99,10 +109,9 @@ public class PlayerFire : MonoBehaviour
 
                     bullet.transform.position = Muzzles[i].transform.position;
                 }
-                for (int i = 0; i < SubMuzzles.Length; i++)
+                for (int i = 0; i < SubMuzzles.Count; i++)
                 {
                     GameObject subbullet = Instantiate(SubBulletPrefab);
-
                     subbullet.transform.position = SubMuzzles[i].transform.position;
                 }
             }

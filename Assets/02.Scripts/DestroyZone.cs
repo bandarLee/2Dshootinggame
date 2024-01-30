@@ -5,11 +5,13 @@ using UnityEngine;
 public class DestroyZone : MonoBehaviour
 {
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OncolliderEnter2D(Collider2D othercollider)
     {
 
-
-            Destroy(collision.gameObject);
+        if(othercollider.tag == "bullet")
+        {
+        }
+            Destroy(othercollider.gameObject);
 
 
 

@@ -1432,7 +1432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fc4c046caa99e40ba82c1202da94d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Movespeed: 3
   MyAnimatior: {fileID: 1247485819}
 --- !u!114 &1247485815
 MonoBehaviour:
@@ -1554,7 +1553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c965a78e1d5433a4083c19f15e25a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifecount: 3
   Life: {fileID: 1824984399}
   explosion: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
 --- !u!95 &1247485819
@@ -1684,7 +1682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248176220}
   m_Layer: 3
-  m_Name: Muzzle
+  m_Name: Muzzle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2437,7 +2435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673d5f68c267b79499069bc8a44e5eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 0
   Point: {fileID: 1413190537}
   BestScoreTextUI: {fileID: 838874758}
   BestScore: 10
