@@ -170,6 +170,7 @@ MonoBehaviour:
   EnemyBasicPrefab: {fileID: 3062219688394477984, guid: d9836b0ed20de2a4c9f0705df395251a, type: 3}
   EnemyTargetPrefab: {fileID: 3240865802252048529, guid: b8b295fe72c27404c9354cee3cc3e946, type: 3}
   EnemyFollowPrefab: {fileID: 3240865802252048529, guid: 4564787ce2c41f549bc1981ced7080db, type: 3}
+  PoolSize: 15
   EnemySpawner: {fileID: 148181226}
   isDelay: 0
   Respawntime: 1
@@ -988,6 +989,7 @@ MonoBehaviour:
   EnemyBasicPrefab: {fileID: 3062219688394477984, guid: d9836b0ed20de2a4c9f0705df395251a, type: 3}
   EnemyTargetPrefab: {fileID: 3240865802252048529, guid: b8b295fe72c27404c9354cee3cc3e946, type: 3}
   EnemyFollowPrefab: {fileID: 3240865802252048529, guid: 4564787ce2c41f549bc1981ced7080db, type: 3}
+  PoolSize: 20
   EnemySpawner: {fileID: 909821475}
   isDelay: 0
   Respawntime: 1
@@ -1042,6 +1044,7 @@ MonoBehaviour:
   EnemyBasicPrefab: {fileID: 3062219688394477984, guid: d9836b0ed20de2a4c9f0705df395251a, type: 3}
   EnemyTargetPrefab: {fileID: 3240865802252048529, guid: b8b295fe72c27404c9354cee3cc3e946, type: 3}
   EnemyFollowPrefab: {fileID: 3240865802252048529, guid: 4564787ce2c41f549bc1981ced7080db, type: 3}
+  PoolSize: 20
   EnemySpawner: {fileID: 934847420}
   isDelay: 0
   Respawntime: 1

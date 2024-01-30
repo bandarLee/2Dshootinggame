@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Enemy;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemySpawn : MonoBehaviour
@@ -9,6 +10,9 @@ public class EnemySpawn : MonoBehaviour
     public GameObject EnemyBasicPrefab; //利 橇府崎
     public GameObject EnemyTargetPrefab; //利 橇府崎
     public GameObject EnemyFollowPrefab; //利 橇府崎
+
+    public int PoolSize = 15;
+    private List<Enemy> EnemyPool;
 
 
     [Header("利焙 府胶迄")]
@@ -22,7 +26,29 @@ public class EnemySpawn : MonoBehaviour
 
     public float EnemyRandomDicision;
     private GameObject _target;
-
+    private void Awake()
+    {
+        EnemyPool = new List<Enemy>();
+        //(积己 -> 掺绊 -> 持绰促) * PoolSize(15).
+        for(int i = 0; i < PoolSize; i++)
+        {
+            GameObject enemyObject = Instantiate(EnemyBasicPrefab);
+            enemyObject.SetActive(false);
+            EnemyPool.Add(enemyObject.GetComponent<Enemy>());
+        }
+        for (int i = 0; i < PoolSize; i++)
+        {
+            GameObject enemyObject = Instantiate(EnemyTargetPrefab);
+            enemyObject.SetActive(false);
+            EnemyPool.Add(enemyObject.GetComponent<Enemy>());
+        }
+        for (int i = 0; i < PoolSize; i++)
+        {
+            GameObject enemyObject = Instantiate(EnemyFollowPrefab);
+            enemyObject.SetActive(false);
+            EnemyPool.Add(enemyObject.GetComponent<Enemy>());
+        }
+    }
     void Start()
     {
         _target = GameObject.Find("Player");
@@ -57,22 +83,53 @@ public class EnemySpawn : MonoBehaviour
     }
     private void SetRandomenemytype()
     {
+        Enemy enemy = null;
         EnemyRandomDicision = Random.Range(0,100);
         if (EnemyRandomDicision < 30)
         {
-            GameObject enemy= Instantiate(EnemyBasicPrefab);
+            foreach(Enemy e in EnemyPool)
+            {
+                if(!e.gameObject.activeInHierarchy && e.enemytype == EnemyType.Basic)
+                {
+                    enemy = e;
+                    enemy.gameObject.SetActive(true);
+
+                    break;
+                }
+            }
             enemy.transform.position = this.transform.position;
         }
         else if (EnemyRandomDicision > 90)
         {
-            GameObject enemy = Instantiate(EnemyFollowPrefab);
+            foreach (Enemy e in EnemyPool)
+            {
+                if (!e.gameObject.activeInHierarchy && e.enemytype == EnemyType.Target)
+                {
+                    enemy = e;
+                    enemy.gameObject.SetActive(true);
+
+                    break;
+                }
+            }
             enemy.transform.position = this.transform.position;
 
 
         }
         else 
         {
-            GameObject enemy = Instantiate(EnemyTargetPrefab);
+            foreach (Enemy e in EnemyPool)
+            {
+                if (!e.gameObject.activeInHierarchy && e.enemytype == EnemyType.Follow)
+                {
+
+                    enemy = e;
+                    enemy.gameObject.SetActive(true);
+
+                    break;
+
+                }
+
+            }
             enemy.transform.position = this.transform.position;
         }
     }

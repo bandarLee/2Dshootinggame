@@ -113,12 +113,12 @@ void Update()
             //충돌을 시작했을때 한번
             Instantiate(explosion, transform.position, Quaternion.identity);
 
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
             player.Minuslifecount();
             Instantiate(explosion, collision.transform.position, Quaternion.identity);
             if (lifecount <= 0)
             {
-                Destroy(collision.gameObject);
+                collision.gameObject.SetActive(false);
             }
         }
 
@@ -145,7 +145,7 @@ void Update()
                 enemydie.Play();
                 SetItemRate();
 
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
 
                 ScoreManager.Instance.Score += 1;
 
@@ -162,7 +162,7 @@ void Update()
             enemydie.Play();
 
             SetItemRate();
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
             ScoreManager.Instance.Score += 1;
 
 

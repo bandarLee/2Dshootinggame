@@ -22,8 +22,8 @@ public class Ultimate : MonoBehaviour
        time += Time.deltaTime;
        
         if (time >= ultimateTime)
-          {
-            Destroy(this.gameObject);
+          { 
+            this.gameObject.SetActive(false);
           }
 
     }
