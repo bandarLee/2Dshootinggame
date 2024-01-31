@@ -1144,6 +1144,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{B242B499-5B70-F3F8-88FC-0BEB37E4D8D9}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="CFXR.WelcomeScreen.csproj">
       <Project>{274669AD-D652-2768-1B6D-340C95204C5D}</Project>
       <Name>CFXR.WelcomeScreen</Name>

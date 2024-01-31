@@ -101,7 +101,7 @@ void Update()
         Player player = Player.GetComponent<Player>();
         MyAnimator.Play("Hit");
 
-            enemydamage.Play();
+        enemydamage.Play();
             
             
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();

@@ -15,6 +15,15 @@ public class PlayerFire : MonoBehaviour
     public int PoolSize = 20;
     private List<GameObject> _bulletPool;
     private List<GameObject> _subBulletPool;
+    public bool UltimateButton = false;
+    public bool YButton = false;
+    public bool AButton = false;
+    public bool XButton = false;
+
+
+
+
+
     void Awake()
     {
         _bulletPool = new List<GameObject>();
@@ -81,73 +90,38 @@ public class PlayerFire : MonoBehaviour
     {
         //발사버튼을 누르면
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha1) )
+        {
+            YButton = true;
+        }
+        if (YButton)
         {
             Auto = true;
-
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            YButton = false;
             Auto = false;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (!YButton)
         {
-            if (ultimateDelay == false)
-            {
-                ultimateDelay = true;
-                ultimate = Instantiate(UltimatePrefab);
-                ultimate.transform.position = Muzzles[2].transform.position;
-            }
+            Auto = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) || UltimateButton)
+        {
+            Ultimate();
         }
 
         if (Auto)
         {
-            if (isDelay == false)
-            {
-                isDelay = true;
 
-
-                for (int i = 0; i < Muzzles.Count; i++)
-                {
-                    GameObject bullet = GetPooledObject(_bulletPool, BulletPrefab);
-                    bullet.transform.position = Muzzles[i].transform.position;
-                    bullet.SetActive(true);
-                    FireSource.Play();
-                }
-                for (int i = 0; i < SubMuzzles.Count; i++)
-                {
-                    GameObject subBullet = GetPooledObject(_subBulletPool, SubBulletPrefab);
-                    subBullet.transform.position = SubMuzzles[i].transform.position;
-                    subBullet.SetActive(true);
-
-
-                }
-            }
-
+            AutoMode();
         }
 
     
-        if (Auto == false && Input.GetKey(KeyCode.Space))
+        if (Auto == false && (Input.GetKey(KeyCode.Space) || XButton))
         {
-            if (isDelay == false)
-            {
-                isDelay = true;
-
-
-                for (int i = 0; i < Muzzles.Count; i++)
-                {
-                    FireSource.Play();
-
-                    GameObject bullet = Instantiate(BulletPrefab);
-
-                    bullet.transform.position = Muzzles[i].transform.position;
-                }
-                for (int i = 0; i < SubMuzzles.Count; i++)
-                {
-                    GameObject subbullet = Instantiate(SubBulletPrefab);
-                    subbullet.transform.position = SubMuzzles[i].transform.position;
-                }
-            }
+            NonAutoMode();
         }
         if (isDelay)
         {
@@ -171,4 +145,94 @@ public class PlayerFire : MonoBehaviour
         }
 
     }
+    public void OnClickAButton()
+    {
+        Debug.Log("A버튼 클릭");
+    }
+    public void OnClickXButton()
+    {
+        Debug.Log("X버튼 클릭");
+        XButton = true;
+    }
+    public void OnClickBButton()
+    {
+        Debug.Log("B버튼 클릭");
+        UltimateButton = true;
+
+    }
+    public void OnClickYButton()
+    {
+        Debug.Log("Y버튼 클릭");
+        if(!YButton){
+            YButton = true;
+        }
+        else if (YButton)
+        {
+            YButton = false;
+        }
+    }
+    public void Ultimate()
+    {
+        if (ultimateDelay == false)
+        {
+            ultimateDelay = true;
+            ultimate = Instantiate(UltimatePrefab);
+            ultimate.transform.position = Muzzles[2].transform.position;
+            UltimateButton = false;
+        }
+    }
+    public void AutoMode()
+    {
+        if (isDelay == false)
+        {
+            isDelay = true;
+
+
+            for (int i = 0; i < Muzzles.Count; i++)
+            {
+                GameObject bullet = GetPooledObject(_bulletPool, BulletPrefab);
+                bullet.transform.position = Muzzles[i].transform.position;
+                bullet.SetActive(true);
+                FireSource.Play();
+            }
+            for (int i = 0; i < SubMuzzles.Count; i++)
+            {
+                GameObject subBullet = GetPooledObject(_subBulletPool, SubBulletPrefab);
+                subBullet.transform.position = SubMuzzles[i].transform.position;
+                subBullet.SetActive(true);
+
+
+            }
+        }
+
+    }
+    public void NonAutoMode()
+    {
+        if (isDelay == false)
+        {
+            isDelay = true;
+            XButton = false;
+
+
+            for (int i = 0; i < Muzzles.Count; i++)
+            {
+                FireSource.Play();
+
+                GameObject bullet = Instantiate(BulletPrefab);
+
+                bullet.transform.position = Muzzles[i].transform.position;
+            }
+            for (int i = 0; i < SubMuzzles.Count; i++)
+            {
+                GameObject subbullet = Instantiate(SubBulletPrefab);
+                subbullet.transform.position = SubMuzzles[i].transform.position;
+            }
+        }
+    }
+
+
+
+
+
+
 }
