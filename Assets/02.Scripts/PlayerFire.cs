@@ -82,7 +82,12 @@ public class PlayerFire : MonoBehaviour
 
     void Start()
     {
-
+        //전처리 단계 : 코드가 컴파일 (해석) 되기 전에 미리 처리되는 단계
+        //전처리문 코드를 이용해서 미리 처리되는 코드를 작성할 수 있다.
+        //C#의 모든 전처리 코드는 #으로 시작한다. (#if, # elif, #endif)
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        GameObject.Find("Joystick canvas XYBZ").SetActive(false);
+#endif
 
     }
 
